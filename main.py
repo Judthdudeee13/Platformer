@@ -1,5 +1,7 @@
 #call pygame and python modules
 import pygame, time
+#call document for platformer levels
+import json
 
 #set up pygame
 pygame.init()
