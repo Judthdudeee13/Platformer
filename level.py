@@ -7,8 +7,10 @@ class tile:
     def __init__(self, id, tile_size, new_width, new_height):
         #find the width of the image
         sprite_sheet_width = pygame.image.load("spritesheet.png").get_width()
-        number_of_tiles_in_a_row = 
-
+        number_of_tiles_in_a_row = sprite_sheet_width // tile_size
+        
+        x = (id % number_of_tiles_in_a_row) * tile_size
+        y = (id // number_of_tiles_in_a_row) * tile_size
 
         self.sprite_sheet = sprites.SpriteSheet("spritesheet.png")
         self.tile = self.sprite_sheet.get_image(x, y, tile_size, tile_size)
