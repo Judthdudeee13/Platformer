@@ -1,5 +1,7 @@
 #call pygame and python modules
 import pygame, time
+#other files
+import level
 #call document for platformer levels
 import json
 
@@ -26,6 +28,10 @@ BLUE = "#0000ff"
 ORANGE = "#ffa500"
 YELLOW = "#ffff00"
 PURPLE = "#800080"
+
+#set up background
+background = level.Level(window, "Background", HEIGHT, WIDTH)
+background.load()
 
 
 # main loop

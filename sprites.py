@@ -1,5 +1,7 @@
 import pygame
 
+pygame.init()
+
 class SpriteSheet:
     def __init__(self, filename):
         # Load the sheet and convert with alpha for transparency
