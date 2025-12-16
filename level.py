@@ -5,11 +5,15 @@ import sprites
 
 #class for makeing tiles re-usable
 class tile:
-    def __init__(self, id, tile_size, new_width, new_height):
+    def __init__(self, tile_info, tile_size, new_width, new_height):
         #find the width of the image
         sprite_sheet_width = pygame.image.load("spritesheet.png").get_width()
         number_of_tiles_in_a_row = sprite_sheet_width/tile_size
 
+        self.tile_info = tile_info
+
+        id = self.tile_info["id"]
+        
         y = math.floor(id/number_of_tiles_in_a_row)
         x = id % number_of_tiles_in_a_row
         
@@ -17,6 +21,12 @@ class tile:
         self.tile = self.sprite_sheet.get_image(x, y, tile_size, tile_size)
         self.tile = pygame.transform.scale(self.tile, (new_width, new_height))
         self.tile_rect = self.tile.get_rect()
+        self.tile_size = self.tile.get_width()
+        self.tile_rect.x = self.tile_info["x"]*self.tile_size
+        self.tile_rect.y = self.tile_info["y"]*self.tile_size
+
+    def load(self, window):
+        window.blit(self.tile, self.tile_rect)
     
 
 #class to create background
@@ -46,5 +56,11 @@ class Level:
     #function to load background
     def load(self):
         tiles = []
+        for x in self.LEVEL:
+            tiles.append(tile(self.LEVEL[x], self.TILE_SIZE, self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
+            
+
+        for y in tiles:
+            y.load(self.window)
         
 
