@@ -32,6 +32,7 @@ class tile:
     #load tile on screen
     def load(self, window):
         window.blit(self.tile, self.tile_rect)
+
     
 
 #class to create background
@@ -56,18 +57,22 @@ class Level:
 
         #get information for the level
         self.LEVEL = self.level_info["layers"][self.list_val]["tiles"]
-        
-        
 
-    #function to load tiles
-    def load(self):
         self.tiles = []
         #sets up tiles
         for x in range(len(self.LEVEL)):
             self.tiles.append(tile(self.LEVEL[x], self.TILE_SIZE, self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
-            
+        
+        
+
+    #function to load tiles
+    def load(self):            
         #loads tiles
         for y in self.tiles:
             y.load(self.window)
+
+    def clear(self):
+        for x in self.tiles:
+            del x
         
 
