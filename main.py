@@ -33,8 +33,8 @@ background.load()
 level_1.load()
 
 #load and play music
-sounds = music.music()
-sounds.play(sounds.level1)
+sounds = music.Music()
+sounds.music(sounds.level1)
 
 
 
