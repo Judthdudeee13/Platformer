@@ -7,12 +7,12 @@ class SpriteSheet:
         # Load the sheet and convert with alpha for transparency
         self.sheet = pygame.image.load(filename).convert_alpha()
 
+    #makes new image 
     def get_image(self, x, y, width, height):
-        # Create a new blank surface for the individual sprite
-        image = pygame.Surface([width, height]).convert_alpha()
-        # Copy the specific section of the spritesheet onto the new surface
-        image.blit(self.sheet, (0, 0), (x, y, width, height))
-        # Return the extracted image
+        #makes rect of tile area
+        rect = pygame.Rect(x*width, y*height, width, height)
+        #pulls rect from image
+        image = self.sheet.subsurface(rect)
         return image
 
 # Example Usage:
