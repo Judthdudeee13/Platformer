@@ -1,7 +1,7 @@
 #call pygame and python modules
 import pygame, time
 #other files
-import level
+import level, player
 #call document for platformer levels
 import json
 
@@ -33,10 +33,18 @@ PURPLE = "#800080"
 background = level.Level(window, "Background", HEIGHT, WIDTH)
 background.load()
 
+#load level1
+level_1 = level.Level(window, "Level_1", HEIGHT, WIDTH)
+level_1.load()
+
+#load player
+player1 = player.Player("player.png", 40, window)
+player1.load()
 
 # main loop
 run = True
 while run:
+    #close pygame
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
